@@ -1,0 +1,21 @@
+.FORM1{
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    text-align: center;
+    background-color: powderblue;
+    right: 24%;
+    padding-bottom: 100px;
+    border-radius:2em;
+    box-shadow: 6px 20px 10px gray;
+    top:35%;
+  }
+  
+  .p2{
+    text-align: right;
+  }
+  
+  .fin{
+    margin-left: auto;
+    margin-right: auto;
+  }
