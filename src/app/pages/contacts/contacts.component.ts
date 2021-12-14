@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UsuarioModel } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-contacts',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
+  usuario: UsuarioModel= new UsuarioModel();
+
   constructor() { }
 
+
   ngOnInit(): void {
+  }
+
+  guardar(form: NgForm){
+
+    console.log(form);
+    console.log(this.usuario);
   }
 
 }
