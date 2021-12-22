@@ -1,17 +1,9 @@
 
-
-
-export class UsuarioModel{
-
+export interface UsuarioModel{
     id: string;
     nombre: string;
-    mail: string;
-    pass: string;
-    constructor(){
-
-        this.id='';
-        this.nombre='';
-        this.mail='';
-        this.pass='';
-    }
+    correo: string;
+    contrasena: string;
+    ApellidoMaterno: string;
+    ApellidoPaterno: string;
 } 

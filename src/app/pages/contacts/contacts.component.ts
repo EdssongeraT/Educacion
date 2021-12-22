@@ -9,7 +9,7 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 })
 export class ContactsComponent implements OnInit {
 
-  usuario: UsuarioModel= new UsuarioModel();
+  
 
   constructor() { }
 
@@ -20,7 +20,7 @@ export class ContactsComponent implements OnInit {
   guardar(form: NgForm){
 
     console.log(form);
-    console.log(this.usuario);
+
   }
 
 }
