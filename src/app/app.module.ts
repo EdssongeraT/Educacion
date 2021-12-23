@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RecursosInstalacionComponent } from './pages/recursos-instalacion/recursos-instalacion.component';
 
 
 
@@ -15,7 +16,8 @@ import { LoginComponent } from './pages/login/login.component';
   declarations: [
     AppComponent,
     ContactsComponent,
-    LoginComponent
+    LoginComponent,
+    RecursosInstalacionComponent
   ],
   imports: [
     BrowserModule,
