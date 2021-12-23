@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "educacion-66163": {
+      "hosting": {
+        "Educacion": [
+          "educacion-66163"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "educacion-66163"
+  }
+}

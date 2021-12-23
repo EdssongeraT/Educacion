@@ -79,7 +79,98 @@
     <div class="row">
         <div class="columnaIzq">
             <div class="seccion">
-                <h2>Perfil</h2>
+                <h2>Registrar Alumno</h2>
+
+                <form>
+                    <div>
+                        <span>
+                            <label for="Correo" class="form-label">Correo:</label><br />
+                            <input #registroCorreo style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="correo" name="correo" placeholder="amogus@gmail.com" /><br />
+                        </span>
+                        <span>
+                            <label for="NoControl" class="form-label">NoControl:</label><br />
+                            <input #registroNoControl style="border-radius: 5px; border-width: 1px;" type="number"
+                                id="NoControl" name="NoControl" /><br />
+                        </span>
+                        <span>
+                            <label for="contraseña" class="form-label">Contraseña:</label><br />
+                            <input #registroContrasena style="border-radius: 5px; border-width: 1px;" type="password"
+                                id="contraseña" name="contraseña" placeholder="Escribe tu contraseña" /><br />
+                        </span>
+                        <!---<span>
+                            <label for="nombre" class="form-label">Nombre(s):</label><br />
+                            <input #registroNombre style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="nombre" name="nombre" placeholder="Escribe tu nombre" /><br />
+                        </span>
+                        <span>
+                            <label for="ApellidoPaterno" class="form-label">Apellido Paterno:</label><br />
+                            <input #registroApellidoP style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="ApellidoPaterno" name="ApellidoPaterno" placeholder="Escribe tu apellido" /><br />
+                        </span>
+                        <span>
+                            <label for="ApellidoMaterno" class="form-label">Apellido Materno:</label><br />
+                            <input #registroApellidoM style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe tu apellido" /><br />
+                        </span>--->
+                        <span>
+                            <label for="FechaDeNacimiento" class="form-label">Fecha De Nacimiento:</label><br />
+                            <input #registroFecha style="border-radius: 5px; border-width: 1px;" type="date" id="Fecha"
+                                name="Fecha" placeholder="Escribe tu apellido" /><br />
+
+                        </span> <span>
+                            <label for="Carrera" class="form-label">Carrera</label><br />
+                            <select #registroDepartamento style="border-radius: 5px; border-width: 1px;" id="Carrera"
+                                name="Carrera">
+                                <option value="ISC">ISC</option>
+                                <option value="IC">IC</option>
+                                <option value="ARQ">ARQ</option>
+                                <option value="IQ">IQ</option>
+                                <option value="IBQ">IBQ</option>
+                                <option value="IE">IE</option>
+                                <option value="IM">IM</option>
+                                <option value="IM">ADM</option>
+                            </select><br />
+                        </span>
+                        <!---<span>
+                            <label for="CodigoPostal" class="form-label">CodigoPostal:</label><br />
+                            <input #registroCP style="border-radius: 5px; border-width: 1px;" type="number"
+                                id="CodigoPostal" name="CodigoPostal" /><br />
+                        </span>
+                        <span>
+                            <label for="Calle" class="form-label">Calle:</label><br />
+                            <input #registroCalle style="border-radius: 5px; border-width: 1px;" type="text" id="Calle"
+                                name="Calle" /><br />
+                        </span>
+                        <span>
+                            <label for="Colonia" class="form-label">Colonia:</label><br />
+                            <input #registroColonia style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="Colonia" name="Colonia" /><br />
+                        </span>
+                        <span>
+                            <label for="Telefono" class="form-label">Telefono:</label><br />
+                            <input #registroTelefono style="border-radius: 5px; border-width: 1px;" type="number"
+                                id="Telefono" name="Telefono" /><br />
+                        </span>--->
+                    </div>
+                    <button (click)="alRegistrarClick(registroCorreo, registroContrasena)"
+                        class="agregar">Agregar</button>
+                </form>
+                <!---                       #registroNoControl,
+                            #registroNombre,
+                            #registroApellidoP,
+                            #registroApellidoM,
+                            #registroTipo,
+                            #registroFecha,
+                            #registroDepartamento,
+                            #registroCP,
+                            #registroCalle,
+                            #registroColonia,
+                            #registroTelefono--->
+            </div>
+            <div class="seccion">
+                <h2>Registrar Docente</h2>
+
                 <form>
                     <div>
                         <span>
@@ -112,13 +203,13 @@
                             <input #registroApellidoM style="border-radius: 5px; border-width: 1px;" type="text"
                                 id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe tu apellido" /><br />
                         </span>
-
+                        
                         <span>
                             <label for="FechaDeNacimiento" class="form-label">Fecha De Nacimiento:</label><br />
                             <input #registroFecha style="border-radius: 5px; border-width: 1px;" type="date" id="Fecha"
                                 name="Fecha" placeholder="Escribe tu apellido" /><br />
 
-                        </span>
+                        </span> 
                         <span>
                             <label for="CodigoPostal" class="form-label">CodigoPostal:</label><br />
                             <input #registroCP style="border-radius: 5px; border-width: 1px;" type="number"
@@ -148,11 +239,13 @@
                                 <option value="Estudiante">Matematicas discretas</option>
                             </select><br />
                         </span>
-
+                        
                     </div>
-                    <button class="agregar">Agregar</button>
+                    <button (click)="alRegistrarClick(registroCorreo, registroContrasena)"
+                        class="agregar">Agregar</button>
                 </form>
             </div>
+
         </div>
         <div class="columnaDer">
             <div class="seccion">
@@ -165,26 +258,10 @@
                 <button type="button" class="botones">Perfil</button>
                 <button type="button" class="botones">Calificaciones</button>
             </div>
+
         </div>
-        
     </div>
-    <footer style="margin-top:10px;">
-        <div class="contenedor-footer" >
-            <div class="content-foo">
-                <h4>Telefono</h4>
-                <p>+52 311 123 4567</p>
-            </div>
-            <div class="content-foo">
-                <h4>Correo</h4>
-                <p>amogus@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Localizacion</h4>
-                <p>63176</p>
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; Podri y asociados</h2>
-    </footer>
+    <app-pie-pagina></app-pie-pagina>
 </body>
 
 </html>

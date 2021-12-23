@@ -5,10 +5,9 @@ import { AngularFireModule} from '@angular/fire/compat'
 import { AngularFirestoreModule, Settings} from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FlashMessagesModule } from 'flash-messages-angular';
-
+import { FirebaseTSApp} from 'firebasets/firebasetsApp/firebaseTSApp';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
-
 
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
@@ -25,6 +24,10 @@ import { PiePaginaComponent } from './pages/Elementos/pie-pagina/pie-pagina.comp
 import { UsuariosComponent } from './pages/Plataforma/usuarios/usuarios.component';
 import { UsuarioServicio } from './services/usuario.service';
 import { CursoComponent } from './pages/Plataforma/curso/curso.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { CrearUsuarioComponent } from './pages/Plataforma/crear-usuario/crear-usuario.component';
 
 
 
@@ -43,7 +46,8 @@ import { CursoComponent } from './pages/Plataforma/curso/curso.component';
     CabeceroComponent,
     PiePaginaComponent,
     UsuariosComponent,
-    CursoComponent
+    CursoComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +56,16 @@ import { CursoComponent } from './pages/Plataforma/curso/curso.component';
     AngularFireModule.initializeApp(environment.firestore,'Educacion'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [UsuarioServicio],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(){
+    FirebaseTSApp.init(environment.firebase);
+  }
+}

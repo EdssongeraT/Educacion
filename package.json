@@ -21,6 +21,7 @@
     "@angular/router": "~13.0.0",
     "angularfire2": "^5.4.2",
     "firebase": "^9.6.1",
+    "firebasets": "^1.2.13",
     "flash-messages-angular": "^4.0.1",
     "rxfire": "^6.0.0",
     "rxjs": "~7.4.0",

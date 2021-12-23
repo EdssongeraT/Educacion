@@ -8,6 +8,10 @@ import { ServiciosInstitucionalesComponent } from './pages/servicios/servicios-i
 import { ServiciosEducativosComponent } from './pages/servicios/servicios-educativos/servicios-educativos.component';
 import { PrincipalPlataformaComponent } from './pages/Plataforma/principal-plataforma/principal-plataforma.component';
 import { UsuariosComponent} from './pages/Plataforma/usuarios/usuarios.component';
+import { PerfilComponent} from './pages/Plataforma/perfil/perfil.component';
+import { CursoComponent} from './pages/Plataforma/curso/curso.component';
+import { CalificacionesComponent} from './pages/Plataforma/calificaciones/calificaciones.component';
+import { CrearUsuarioComponent} from './pages/Plataforma/crear-usuario/crear-usuario.component';
 
 const routes: Routes =[
   {path: '', component: HomeComponent},
@@ -16,7 +20,11 @@ const routes: Routes =[
   {path: 'login', component: LoginComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'principal-plataforma', component: PrincipalPlataformaComponent},
-  {path: 'usuarios', component: UsuariosComponent}
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'perfil', component: PerfilComponent},
+  {path: 'curso', component: CursoComponent},
+  {path: 'calificaciones', component: CalificacionesComponent},
+  {path: 'crear-usuario', component: CrearUsuarioComponent}
   //{path: '**', pathMatch: 'full', redirectTo: 'contacts'}
   //{path: 'contacts/:id', component: ContactsComponent}
 ]

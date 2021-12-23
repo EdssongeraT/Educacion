@@ -103,6 +103,16 @@
               "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Educacion:build:production",
+            "firebaseProject": "educacion-66163",
+            "firebaseHostingSite": "educacion-66163"
+          }
         }
       }
     }
