@@ -12,6 +12,9 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { LoginComponent } from './pages/login/login.component';
+
+import { RecursosInstalacionComponent } from './pages/recursos-instalacion/recursos-instalacion.component';
+
 import { RecursosHumanosComponent } from './pages/Recursos/recursos-humanos/recursos-humanos.component';
 import { ServiciosInstitucionalesComponent } from './pages/servicios/servicios-institucionales/servicios-institucionales.component';
 import { ServiciosAdministrativosComponent } from './pages/servicios/servicios-administrativos/servicios-administrativos.component';
@@ -31,11 +34,13 @@ import { CrearUsuarioComponent } from './pages/Plataforma/crear-usuario/crear-us
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
     LoginComponent,
+    RecursosInstalacionComponent,
     RecursosHumanosComponent,
     ServiciosInstitucionalesComponent,
     ServiciosAdministrativosComponent,

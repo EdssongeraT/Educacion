@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+
+
+import { RecursosInstalacionComponent } from './pages/recursos-instalacion/recursos-instalacion.component';
+
+
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ServiciosInstitucionalesComponent } from './pages/servicios/servicios-institucionales/servicios-institucionales.component';
@@ -24,7 +29,9 @@ const routes: Routes =[
   {path: 'perfil', component: PerfilComponent},
   {path: 'curso', component: CursoComponent},
   {path: 'calificaciones', component: CalificacionesComponent},
-  {path: 'crear-usuario', component: CrearUsuarioComponent}
+  {path: 'crear-usuario', component: CrearUsuarioComponent},
+  {path: 'RecursosInstalacion', component: RecursosInstalacionComponent}
+
   //{path: '**', pathMatch: 'full', redirectTo: 'contacts'}
   //{path: 'contacts/:id', component: ContactsComponent}
 ]
