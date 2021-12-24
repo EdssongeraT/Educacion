@@ -1,1 +1,78 @@
-<p>servicios-externos works!</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <router-outlet></router-outlet>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>servicios-educativos</title>
+  <link rel="shortcut icon" href="Educacion\src\assets\Imagenes\Logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <app-cabecero></app-cabecero>
+  </header>
+  <main>
+    <section class="contenedor sobre-nosotros">
+      <h2 class="titulo">Servicios Externos</h2>
+      <div class="contenedor-sobre-nosotros">
+        <img src="assets/Imagenes/ServiciosExternos_1.svg" alt="" class="imagen-about-us">
+        <div class="contenido-textos">
+          <p>Servicios digitales relacionados con las actividades académicas, administrativas y del medio universitario dirigido hacia el público externo. 
+              A continuación se encuentran los servicios categorizados por perfil de usuario y por tema de interés, con el fin, de facilitar su búsqueda.</p>
+               <p>Consulta la información de los siguientes trámites:</p>
+          <h3><span>1</span>Registro Académico</h3>
+          <p>La inscripción es el proceso que regula el ingreso, reingreso y registro de los jóvenes a la universidad, 
+            para facilitar la continuidad de los mismos a través del Sistema Educativo.</p>
+        </div>
+      </div>
+    </section>
+    <section style="background-color: rgb(235, 244, 253)">
+      <section class="contenedor sobre-nosotros">
+        <div class="contenedor-sobre-nosotros">
+          <div class="contenido-textos">
+            <h3><span>2</span>Consultade clases programadas</h3>
+            <p>Permite al estudiante consultas las clases programadas por semestre</p>
+            <h3><span>3</span>Consulta catálogo de asignaturas</h3>
+            <p>Se le brinda al estudiante la facilidad de consultar el catálogo de asigaruta, como también se le conocen como cursos</p>
+          </div>
+          <img src="assets/Imagenes/principal_2.svg" alt="" class="imagen-about-us">
+        </div>
+      </section>
+    </section>
+    <section style="background-color: rgb(255, 255, 255)">
+      <section class="about-services" style="background-color: rgb(255, 255, 255)">
+        <div class="contenedor">
+          <h2 class="titulo">Otros servicios</h2>
+          <div class="servicio-cont">
+            <div class="servicio-ind" style="margin: 10px;">
+              <img src="assets/Imagenes/" alt="">
+              <h3>Insitucionales</h3>
+              <p>Le corresponde la planificación, obtención, asignación, registro, control y evaluación de los recursos humanos, materiales y financieros de la entidad; por lo que debe promover el uso eficiente y eficaz de los recursos institucionales.</p>
+            </div>
+
+            <div class="servicio-ind" style="margin: 10px;">
+              <img src="assets/Imagenes/" alt="">
+              <h3>Administrativos</h3>
+              <p>brindar a la comunidad universitaria y los públicos externos relacionados con la misma un amplio
+                portafolio de servicios que
+                van desde gestión de mantenimiento, hasta otros como seguridad integral</p>
+            </div>
+            <div class="servicio-ind" style="margin: 10px;">
+                <img src="assets/Imagenes/" alt="">
+                <h3>Educativos</h3>
+                <p>responsable de organizar y coordinar la operación del sistema de registro, control escolar y titulación
+                  de los estudiantes
+                  que cursan las diversas carreras educativas que oferta la Universidad</p>
+              </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <app-pie-pagina></app-pie-pagina>
+</body>
+
+</html>
