@@ -85,42 +85,42 @@
                     <div>
                         <span>
                             <label for="Correo" class="form-label">Correo:</label><br />
-                            <input #registroCorreo style="border-radius: 5px; border-width: 1px;" type="text"
+                            <input #registroCorreoA style="border-radius: 5px; border-width: 1px;" type="text"
                                 id="correo" name="correo" placeholder="amogus@gmail.com" /><br />
                         </span>
                         <span>
                             <label for="NoControl" class="form-label">NoControl:</label><br />
-                            <input #registroNoControl style="border-radius: 5px; border-width: 1px;" type="number"
+                            <input #registroNoControlA style="border-radius: 5px; border-width: 1px;" type="number"
                                 id="NoControl" name="NoControl" /><br />
                         </span>
                         <span>
                             <label for="contraseña" class="form-label">Contraseña:</label><br />
-                            <input #registroContrasena style="border-radius: 5px; border-width: 1px;" type="password"
-                                id="contraseña" name="contraseña" placeholder="Escribe tu contraseña" /><br />
+                            <input #registroContrasenaA style="border-radius: 5px; border-width: 1px;" type="password"
+                                id="contraseña" name="contraseña" placeholder="Escribe contraseña" /><br />
                         </span>
-                        <!---<span>
+                        <span>
                             <label for="nombre" class="form-label">Nombre(s):</label><br />
-                            <input #registroNombre style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="nombre" name="nombre" placeholder="Escribe tu nombre" /><br />
+                            <input #registroNombreA style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="nombre" name="nombre" placeholder="Escribe nombre" /><br />
                         </span>
                         <span>
                             <label for="ApellidoPaterno" class="form-label">Apellido Paterno:</label><br />
-                            <input #registroApellidoP style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="ApellidoPaterno" name="ApellidoPaterno" placeholder="Escribe tu apellido" /><br />
+                            <input #registroApellidoPA style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="ApellidoPaterno" name="ApellidoPaterno" placeholder="Escribe apellido" /><br />
                         </span>
                         <span>
                             <label for="ApellidoMaterno" class="form-label">Apellido Materno:</label><br />
-                            <input #registroApellidoM style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe tu apellido" /><br />
-                        </span>--->
+                            <input #registroApellidoMA style="border-radius: 5px; border-width: 1px;" type="text"
+                                id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe apellido" /><br />
+                        </span>
                         <span>
                             <label for="FechaDeNacimiento" class="form-label">Fecha De Nacimiento:</label><br />
-                            <input #registroFecha style="border-radius: 5px; border-width: 1px;" type="date" id="Fecha"
+                            <input #registroFechaA style="border-radius: 5px; border-width: 1px;" type="date" id="Fecha"
                                 name="Fecha" placeholder="Escribe tu apellido" /><br />
 
                         </span> <span>
                             <label for="Carrera" class="form-label">Carrera</label><br />
-                            <select #registroDepartamento style="border-radius: 5px; border-width: 1px;" id="Carrera"
+                            <select #registroCarreraA style="border-radius: 5px; border-width: 1px;" id="Carrera"
                                 name="Carrera">
                                 <option value="ISC">ISC</option>
                                 <option value="IC">IC</option>
@@ -153,16 +153,18 @@
                                 id="Telefono" name="Telefono" /><br />
                         </span>--->
                     </div>
-                    <button (click)="alRegistrarClick(registroCorreo, registroContrasena)"
+                    <button (click)="alRegistrarAlumno(
+                        registroCorreoA,
+                        registroContrasenaA,
+                        registroNoControlA,
+                        registroNombreA,
+                        registroApellidoPA,
+                        registroApellidoMA,
+                        registroFechaA,
+                        registroCarreraA)"
                         class="agregar">Agregar</button>
                 </form>
-                <!---                       #registroNoControl,
-                            #registroNombre,
-                            #registroApellidoP,
-                            #registroApellidoM,
-                            #registroTipo,
-                            #registroFecha,
-                            #registroDepartamento,
+                <!---       
                             #registroCP,
                             #registroCalle,
                             #registroColonia,
@@ -186,28 +188,28 @@
                         <span>
                             <label for="contraseña" class="form-label">Contraseña:</label><br />
                             <input #registroContrasena style="border-radius: 5px; border-width: 1px;" type="password"
-                                id="contraseña" name="contraseña" placeholder="Escribe tu contraseña" /><br />
+                                id="contraseña" name="contraseña" placeholder="Escribe contraseña" /><br />
                         </span>
                         <span>
                             <label for="nombre" class="form-label">Nombre(s):</label><br />
                             <input #registroNombre style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="nombre" name="nombre" placeholder="Escribe tu nombre" /><br />
+                                id="nombre" name="nombre" placeholder="Escribe nombre" /><br />
                         </span>
                         <span>
                             <label for="ApellidoPaterno" class="form-label">Apellido Paterno:</label><br />
                             <input #registroApellidoP style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="ApellidoPaterno" name="ApellidoPaterno" placeholder="Escribe tu apellido" /><br />
+                                id="ApellidoPaterno" name="ApellidoPaterno" placeholder="Escribe apellido" /><br />
                         </span>
                         <span>
                             <label for="ApellidoMaterno" class="form-label">Apellido Materno:</label><br />
                             <input #registroApellidoM style="border-radius: 5px; border-width: 1px;" type="text"
-                                id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe tu apellido" /><br />
+                                id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Escribe apellido" /><br />
                         </span>
                         
                         <span>
                             <label for="FechaDeNacimiento" class="form-label">Fecha De Nacimiento:</label><br />
                             <input #registroFecha style="border-radius: 5px; border-width: 1px;" type="date" id="Fecha"
-                                name="Fecha" placeholder="Escribe tu apellido" /><br />
+                                name="Fecha"/><br />
 
                         </span> 
                         <span>
@@ -232,7 +234,7 @@
                         </span>
                         <span>
                             <label for="Materia" class="form-label">Materia</label><br />
-                            <select #registroTipo style="border-radius: 5px; border-width: 1px;" id="Materia"
+                            <select #registroMateria style="border-radius: 5px; border-width: 1px;" id="Materia"
                                 name="Materia">
                                 <option value="Admin">Calculo Diferencial</option>
                                 <option value="Docente">Calculo integral</option>
@@ -241,8 +243,22 @@
                         </span>
                         
                     </div>
-                    <button (click)="alRegistrarClick(registroCorreo, registroContrasena)"
+                    <button (click)="alRegistrarMaestro(
+                        registroCorreo,
+                        registroContrasena,
+                        registroNoControl,
+                        registroNombre,
+                        registroApellidoP,
+                        registroApellidoM,
+                        registroFecha,
+                        registroMateria,
+                        registroCP,
+                        registroCalle,
+                        registroColonia,
+                        registroTelefono
+                        )" 
                         class="agregar">Agregar</button>
+                        
                 </form>
             </div>
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { UsuarioServicio } from 'src/app/services/usuario.service';
+import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
+import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 
 @Component({
   selector: 'app-usuarios',
@@ -9,6 +11,8 @@ import { UsuarioServicio } from 'src/app/services/usuario.service';
 })
 export class UsuariosComponent implements OnInit {
   usuarios: UsuarioModel[];
+  auth = new FirebaseTSAuth();
+  firestore = new FirebaseTSFirestore();
   constructor(private usuarioServicio: UsuarioServicio) { }
 
   ngOnInit(): void {
@@ -17,6 +21,5 @@ export class UsuariosComponent implements OnInit {
         this.usuarios = usuarios;
       }
     )
-  }
-
+  } 
 }

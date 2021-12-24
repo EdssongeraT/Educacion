@@ -62,19 +62,34 @@ body {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
-.columnaIzq>.seccion:hover{
-background-color: #2e4b81;
-color: #ffff;
-}
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10px;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 3px;
+}
+td, th :hover{
+  background-color: #2e4b81;
+  color: #ffff;
+}
+tr:nth-child(even) {
+  background-color: #c6e7fd;
+}
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {
     width: 100%;
     padding: 0;
   }
+
 }
