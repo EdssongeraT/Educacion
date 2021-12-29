@@ -10,13 +10,13 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
-  selector: 'app-salarycode',
-  templateUrl: './salarycode.component.html',
-  styleUrls: ['./salarycode.component.css'],
+  selector: 'app-crearSalario',
+  templateUrl: './crearSalario.component.html',
+  styleUrls: ['./crearSalario.component.css'],
   animations: [moveIn(), fallIn()],
   host: { '[@moveIn]': '' }
 })
-export class SalaryCodeComponent implements OnInit, OnDestroy {
+export class CrearSalarioComponent implements OnInit, OnDestroy {
 
   members: any[];
   dataSource: MatTableDataSource<any>;
@@ -199,7 +199,7 @@ export class SalaryCodeComponent implements OnInit, OnDestroy {
   }
 
   deleteDoc(docId) {
-    if (confirm("Are you sure want to delete this record ?")) {
+    if (confirm("¿Esta seguro?")) {
       this.cargando = true;
       this._backendService.deleteDoc('SALARY_CD', docId).then(res => {
         if (res) {
@@ -219,17 +219,12 @@ export class SalaryCodeComponent implements OnInit, OnDestroy {
     }
   }
 
-  //mat table paginator and filter functions
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  // applyFilter(filterValue: string) {
-  //   filterValue = filterValue.trim(); // Remove whitespace
-  //   filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-  //   this.dataSource.filter = filterValue;
-  // }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -239,7 +234,6 @@ export class SalaryCodeComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
-    // this is not needed when observable is used, in this case, we are registering user on subscription
     if (this.querySubscription) {
       this.querySubscription.unsubscribe();
     }

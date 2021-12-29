@@ -8,10 +8,10 @@ export const environment = {
   database: 'firebase',
   social: {
     role: 'Guest',
-    fblink: 'https://www.facebook.com/elishconsulting',
-    linkedin: 'https://www.linkedin.com/company/elish-consulting/about/?viewAsMember=true',
-    github: 'https://github.com/AmitXShukla',
-    emailid: 'info@elishconsulting.com'
+    fblink: 'https://www.facebook.com/',
+    linkedin: 'https://www.linkedin.com/',
+    github: 'https://github.com/',
+    emailid: ''
   },
   socialAuthEnabled: true,
   firebase: {

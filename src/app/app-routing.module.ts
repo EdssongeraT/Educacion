@@ -16,7 +16,7 @@ import { CodCalificacionComponent} from './config/CodCalificacion.component';
 import { CursosComponent } from './config/cursos.component';
 import { EmpleadoComponent } from './staff/empleado.component';
 import { SalarioComponent } from './staff/salario.component';
-import { SalaryCodeComponent } from './staff/salarycode.component';
+import { CrearSalarioComponent } from './staff/crearSalario.component';
 import { TrabajosComponent } from './online/trabajos.component';
 import { VerTrabajoComponent } from './online/verTrabajo.component';
 import { TareaComponent } from './online/tarea.component';
@@ -62,7 +62,7 @@ const routes: Routes = [
   { path: 'verTutoriales', component: VerTutorialesComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
   { path: 'clases', component: ClasesComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
   { path: 'verClases', component: VerClasesComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
-  { path: 'salarycode', component: SalaryCodeComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
+  { path: 'crearSalario', component: CrearSalarioComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
   { path: 'salario/:id', component: SalarioComponent, canActivate: [AuthGuardService, NavAuthGuardService] },
   { path: 'configuracion', component: ConfiguracionComponent, canActivate: [AuthGuardService] },
   { path: 'notificaciones', component: NotificacionesComponent, canActivate: [AuthGuardService] },

@@ -9,7 +9,6 @@ import { ElishCustomMaterialModule } from './elementos/custom.material';
 import { LoginComponent } from './elementos/login/login.component';
 import { RegistroComponent } from './elementos/login/registro.component';
 import { ConfiguracionComponent } from './elementos/configuracion/configuracion.component';
-import { AboutusComponent } from './elementos/aboutus.component';
 import { aTarifaComponent } from './config/aTarifa.component';
 import { CodCalificacionComponent } from './config/CodCalificacion.component';
 import { CursosComponent } from './config/cursos.component';
@@ -25,7 +24,7 @@ import { environment } from '../environments/environment';
 import { AsistenciaComponent } from './administracion/asistencia.component';
 import { HeaderAdminComponent } from './elementos/cabecera/header.admin.component';
 import { EmpleadoComponent } from './staff/empleado.component';
-import { SalaryCodeComponent } from './staff/salarycode.component';
+import { CrearSalarioComponent } from './staff/crearSalario.component';
 import { SalarioComponent } from './staff/salario.component';
 import { TareaComponent } from './online/tarea.component';
 import { TutorialesComponent } from './online/tutoriales.component';
@@ -64,7 +63,6 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
     LoginComponent,
     RegistroComponent,
     ConfiguracionComponent,
-    AboutusComponent,
     aTarifaComponent,
     CodCalificacionComponent,
     EstudianteComponent,
@@ -74,7 +72,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
     AsistenciaComponent,
     HeaderAdminComponent,
     EmpleadoComponent,
-    SalaryCodeComponent,
+    CrearSalarioComponent,
     SalarioComponent,
     TareaComponent,
     TutorialesComponent,
