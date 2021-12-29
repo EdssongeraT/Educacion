@@ -6,73 +6,77 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div>
-    <ul>
-        <li class="active" style="padding: 8px 10px;">
-          <img src='assets/Imagenes/Logo.png' alt="Incio">
-        </li>
-        
-        <div class="lista">
-            <li class="dropbtn">
-                <a>Institución</a>
-                <div class="dropdown-content">
-                    <a>Antecentes</a>
-                    <a>¿Qué somos?</a>
-                    <a>¿Qué nos identifica?</a>
-                </div>
+    <header>
+      <nav id="barra">
+        <div>
+          <ul>
+            <li class='active' style='padding: 8px 10px;'>
+              <a href='' style='padding:0%;'><img src='assets/Imagenes/Logo.png' alt='Incio'></a>
             </li>
-        </div>
-        <div class="lista">
-          <li class="dropbtn">
-            <a>Servicios</a>
-              <div class="dropdown-content">
-                  <a>Institucionales</a>
-                  <a>Educativos</a>
-                  <a>Administrativos</a>
-                  <a>Informativos</a>
-                  <a>Externos</a>
-              </div>
-          </li>
-        </div>
-        <div class="lista">
-          <li class="dropbtn">
-            <a>Recursos</a>
-              <div class="dropdown-content">
-                  <a>Humano</a>
-                  <a>Instalación</a>
+            <div class='lista'>
+              <li class='dropbtn'>
+                <a>Servicios</a>
+                <div class='dropdown-content'>
+                  <a routerLink="/servicios-institucionales">Institucionales</a>
+                  <a routerLink="/servicios-educativos">Educativos</a>
+                  <a routerLink="/servicios-administrativos">Administrativos</a>
+                  <a routerLink="/servicios-externos">Externos</a>
+                </div>
+              </li>
+            </div>
+            <div class='lista'>
+              <li class='dropbtn'>
+                <a>Recursos</a>
+                <div class='dropdown-content'>
+                  <a href='./RecursosHumanos'>Humano</a>
+                  <a href='./RecursosInstalacion'>Instalación</a>
                   <a>Multimedia</a>
                   <a>Recursos humanos</a>
                   <a>Útiles escolares</a>
-              </div>
-          </li>
-        </div>
-        <div class="lista">
-          <li class="dropbtn">
-            <a>Políticas</a>
-              <div class="dropdown-content">
+                </div>
+              </li>
+            </div>
+            <div class='lista'>
+              <li class='dropbtn'>
+                <a>Políticas</a>
+                <div class='dropdown-content'>
                   <a>Protocolo sanitario COVID-19</a>
                   <a>Acuerdos de convivencia</a>
                   <a>Administrativas</a>
                   <a>Uniforme</a>
                   <a>Seguridad</a>
-              </div>
-          </li>
+                </div>
+              </li>
+            </div>
+            <div class='lista'>
+              <li class='dropbtn'>
+                <a href='./contacts'>Contactos</a>
+              </li>
+            </div>
+            <div   class='lista'>
+              <li class='dropbtn'>
+                <a href='/login'>Ingresar</a>
+              </li>
+            </div>
+            <div   >
+              <li class='dropbtn'>
+                <a href='/principal-plataforma'>Plataforma</a>
+              </li>
+            </div>
+            <div   class='lista'>
+              <li class='dropbtn'>
+                <a>Perfil</a>
+                <div  class='dropdown-content'>
+                  <a>Perfil</a>
+                  <a>Calificaciones</a>
+                  <a>Salir</a>
+                </div>
+              </li>
+            </div>
+          </ul>
         </div>
-        <div class="lista">
-          <li class="dropbtn">
-            <a href="/contacts">Contactos</a>
-              <div class="dropdown-content">
-                  <a>Correos electrónicos</a>
-                  <a>Telefono</a>
-                  <a>Whatsapp</a>
-                  <a>Redes sociales</a>
-                  <a>Ubicación</a>
-              </div>
-          </li>
-        </div>
-        <li style="padding: 8px 10px;"><a>Buscar</a></li>
-    </ul>
-    </div>
+      </nav>
+    </header>
     <div class="container-fluid" >
         <div class="row">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
