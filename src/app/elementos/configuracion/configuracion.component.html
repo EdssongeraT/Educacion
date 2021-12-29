@@ -1,0 +1,78 @@
+<app-header-admin pageTitle="Configuración" imageUrl="account_circle" helpType="settingspage"></app-header-admin>
+<mat-card *ngIf="!guardarCambios else showguardarCambiosCard">
+    <form #formulario='ngForm'>
+      <mat-card-content>
+        <mat-card-title>
+          <span class="small-headline">Configuración cuenta</span>
+        </mat-card-title>
+        <mat-progress-bar mode="indeterminate" *ngIf="Cargando"></mat-progress-bar>
+        <mat-error *ngIf="error">Error de autenticación {{ errorMsj }}</mat-error>
+        <mat-card-actions align="start">
+          <button type="button" (click)="onSubmit(formulario.value);" [disabled]="!formulario.valid" mat-raised-button color="primary">Actualizar</button>
+          <button type="button" (click)="logout()" mat-raised-button color="primary">Salir</button>
+          <span *ngIf="(data$ | async)?.role == 'estudiante'">
+            <button type="button" routerLink="/aboutus" mat-raised-button color="primary">Estudiante</button>
+          </span>
+          <span *ngIf="(data$ | async)?.role == 'padre o tutor'">
+            <button type="button" routerLink="/aboutus" mat-raised-button color="primary">padre o tutor</button>
+          </span>
+          <span *ngIf="(data$ | async)?.role == 'admin'">
+            <button type="button" routerLink="/estudiante" mat-raised-button color="primary">Admin</button>
+          </span>
+          <span *ngIf="(data$ | async)?.role == 'staff'">
+            <button type="button" routerLink="/estudiante" mat-raised-button color="primary">Staff</button>
+          </span>
+          <span *ngIf="(data$ | async)?.role == 'docente'">
+            <button type="button" routerLink="/estudiante" mat-raised-button color="primary">docente</button>
+          </span>
+        </mat-card-actions>
+        <mat-form-field class="example-form">
+          <input matInput placeholder="name" name="name" #name="ngModel" [ngModel]="(data$ | async)?.name" ngModel required minlength="5"
+            maxlength="30">
+        </mat-form-field>
+        <span *ngIf="name.invalid && (name.dirty || name.touched)">
+          <mat-error *ngIf="name.errors['required']">nombre es obligatorio.</mat-error>
+          <mat-error *ngIf="name.errors['minlength']">nombre debe ser mayor de 5 caracteres</mat-error>
+          <mat-error *ngIf="name.errors['maxlength']">nombre debe se menor a 30 caracteres.</mat-error>
+        </span>
+        <br />
+        <mat-form-field class="example-form">
+          <input matInput placeholder="email" name="email" #email="ngModel" [ngModel]="(data$ | async)?.email" required email>
+        </mat-form-field>
+        <br />
+        <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">introduzca un email valido</mat-error>
+        <mat-form-field class="example-form">
+          <input matInput type="password" placeholder="contrasena" name="phone" #phone="ngModel" [ngModel]="(data$ | async)?.phone" required maxlength="10">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-form">
+          <input matInput type="password" placeholder="key" name="secretKey" #secretKey="ngModel" [ngModel]="(data$ | async)?.secretKey"
+            required>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-form">
+          <mat-select placeholder="rol" name="role" #role="ngModel" [ngModel]="(data$ | async)?.role" required>
+            <mat-option *ngFor="let role of roles" [value]="role.value">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+    </form>
+</mat-card>
+<ng-template #showguardarCambiosCard>
+  <br>
+  <br>
+  <br>
+  <br>
+  <mat-error>
+    Tus datos han sido actualizados.
+  </mat-error>
+  <br>
+  <br>
+  <br>
+  <br>
+  <mat-card-actions align="start">
+    <button type="button" (click)="guardarCambios=false;routeLoginPage();" mat-raised-button color="primary">Cerrar</button>
+  </mat-card-actions>
+</ng-template>

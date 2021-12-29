@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+  <button mat-mini-fab color="warn" [matMenuTriggerFor]="rootAdminMenu">
+    <mat-icon>vertical_split</mat-icon>
+  </button>
+  <mat-menu #rootAdminMenu="matMenu">
+    <button mat-menu-item routerLink="/aboutus">
+      <mat-icon color="black">dashboard</mat-icon>Home
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="studentMenu"
+      *ngIf="(userRole == 'student' || userRole == 'parent' || userRole == 'guest' || userRole == 'admin')">
+      <mat-icon color="warn">bookmark</mat-icon>Ver
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="onlineMenu"
+      *ngIf="(userRole == 'student' || userRole == 'parent' || userRole == 'guest' || userRole == 'admin')">
+      <mat-icon color="warn">web</mat-icon>Online
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="manageStudent" *ngIf="(userRole == 'admin' || userRole == 'teacher')">
+      <mat-icon color="warn">star</mat-icon>Administracion
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="teacherMenu" *ngIf="(userRole == 'admin' || userRole == 'teacher')">
+      <mat-icon color="warn">book</mat-icon>Docente
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="staffMenu" *ngIf="(userRole == 'admin' || userRole == 'staff')">
+      <mat-icon color="warn">attach_money</mat-icon>Staff
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="setupMenu" *ngIf="(userRole == 'admin' || userRole == 'staff')">
+      <mat-icon color="warn">code</mat-icon>Configuracion
+    </button>
+  </mat-menu>
+  <mat-menu #studentMenu="matMenu">
+    <button mat-menu-item routerLink="/MostrarEstudiante">Perfil</button>
+    <button mat-menu-item routerLink="/verCalificaciones">Calificaciones</button>
+    <button mat-menu-item routerLink="/verTarifa">Tarifas</button>
+  </mat-menu>
+  <mat-menu #manageStudent="matMenu">
+    <button mat-menu-item routerLink="/estudiante">Estudiante</button>
+    <button mat-menu-item routerLink="/estudiante">Calificaciones</button>
+    <button mat-menu-item routerLink="/estudiante">Tarifas</button>
+  </mat-menu>
+  <mat-menu #setupMenu="matMenu">
+    <button mat-menu-item routerLink="/cursos">Cursos</button>
+    <button mat-menu-item routerLink="/aTarifa">Tarifas</button>
+    <button mat-menu-item routerLink="/CodCalificacion">Calificaciones</button>
+  </mat-menu>
+  <mat-menu #onlineMenu="matMenu">
+    <button mat-menu-item routerLink="/verTarea">Tareas</button>
+    <button mat-menu-item routerLink="/VerTutoriales">Tutoriales</button>
+    <button mat-menu-item routerLink="/verClases">Clases</button>
+    <button mat-menu-item routerLink="/verTrabajo">Trabajos</button>
+  </mat-menu>
+  <mat-menu #teacherMenu="matMenu">
+    <button mat-menu-item routerLink="/tarea">Crear tarea</button>
+    <button mat-menu-item routerLink="/tutoriales">Crear Tutoriales</button>
+    <button mat-menu-item routerLink="/clases">Crear clases</button>
+    <button mat-menu-item routerLink="/trabajos">Crear trabajo</button>
+  </mat-menu>
+  <mat-menu #staffMenu="matMenu">
+    <button mat-menu-item routerLink="/employee">Empleado</button>
+    <button mat-menu-item routerLink="/salary">Salario</button>
+    <button mat-menu-item routerLink="/salarycode">Crear salario</button>
+  </mat-menu>
+  
+  <mat-icon class="example-icon">{{ imageUrl }}</mat-icon>
+  <span matTooltip="About us">{{ pageTitle }}</span>
+  <span class="example-spacer"></span>
+
+  <span matTooltip="Configuracion perfil">
+    <button mat-icon-button routerLink="/configuracion">
+      <mat-icon svgIcon="account_circle"></mat-icon>
+    </button>
+  </span>
+ 
+</mat-toolbar>

@@ -1,0 +1,24 @@
+<app-header-admin pageTitle="Notificationes" imageUrl="sms" helpType="settingspage"></app-header-admin>
+<mat-card [@fallIn]='state'>
+  <mat-card-content>
+    <mat-error *ngIf="guardarCambios">
+      Se guardaron los datos
+      <label class="small-spacer"></label>
+      <mat-icon (click)="guardarCambios=false;" svgIcon="clear"></mat-icon>
+    </mat-error>
+    <mat-progress-bar mode="indeterminate" *ngIf="Cargando"></mat-progress-bar>
+    <mat-error *ngIf="error">Error: {{ errorMsj }}</mat-error>
+    <br/>
+    <div *ngFor="let item of (data$ | async)">
+      <font color="(item.readReceipt == true) ? 'red' : 'blue'">{{ item.messageType }}</font>
+      <span class="med-spacer"></span>
+      <br/>
+    </div>
+    <br/>
+    <br/>
+    <div *ngIf="toggle">
+      {{ this.data }}
+      <mat-icon (click)="toggle=!toggle">cerrar</mat-icon>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,53 @@
+<app-header-admin pageTitle="Registrarse" imageUrl="fiber_new" helpType="homepage"></app-header-admin>
+
+<mat-card *ngIf="!guardarcambios else showSavedChangesCard">
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+    <mat-card-content>
+      <mat-card-title>
+        <span class="small-headline">Crear cuenta</span>
+        <span class="small-spacer"></span>
+        <a [routerLink]="['/login']" color="primary">
+        </a>
+      </mat-card-title>
+      <mat-card-actions align="start" *ngIf="error">
+        <mat-error>El usuario ya existe.</mat-error>
+      </mat-card-actions>
+      <mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
+      <div *ngIf="falloConexion" class="label-error">Fallo de conexion.</div>
+      <mat-card-actions align="start">
+        <button type="submit" [disabled]="!formData.valid" mat-raised-button color="primary">Registrarse</button>
+      </mat-card-actions>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="email" name="email" #email="ngModel" ngModel required email>
+      </mat-form-field>
+      <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Por favor introduzca un correo valido.
+      </mat-error>
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" placeholder="contraseña" name="password" #password="ngModel" ngModel required
+          minlength="5" maxlength="30">
+      </mat-form-field>
+      <span *ngIf="password.invalid && (password.dirty || password.touched)">
+        <mat-error *ngIf="password.errors['required']">La contraseña es obligatoria.</mat-error>
+        <mat-error *ngIf="password.errors['minlength']">La contraseña debe tener mas de 5 caracteres.</mat-error>
+        <mat-error *ngIf="password.errors['maxlength']">La contraseña debse tener menos de 30 caracteres.</mat-error>
+      </span>
+    </mat-card-content>
+  </form>
+</mat-card>
+<ng-template #showSavedChangesCard>
+  <br>
+  <br>
+  <br>
+  <br>
+  <mat-error>
+    Se ha creado el usuario
+  </mat-error>
+  <br>
+  <br>
+  <br>
+  <br>
+  <mat-card-actions align="start">
+    <button type="button" (click)="guardarcambios=false;routeLoginPage();" mat-raised-button
+      color="primary">Cerrar</button>
+  </mat-card-actions>
+</ng-template>

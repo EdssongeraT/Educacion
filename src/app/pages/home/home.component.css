@@ -27,8 +27,8 @@ header>div {
     width: 100%;
     height: 600px;
     background: #4e74bc;
-    background: -webkit-linear-gradient(to right, hsla(182, 100%, 74%, 0.459), hsla(226, 57%, 47%, 0.664)), url(assets/Imagenes/LibreriaOnline.jpeg);
-    background: linear-gradient(to right, hsla(182, 100%, 74%, 0.459),  hsla(226, 57%, 47%, 0.664)), url(/assets/Imagenes/QueSomos.jpeg);
+    background: -webkit-linear-gradient(to right, hsla(182, 100%, 74%, 0.459), hsla(226, 57%, 47%, 0.664)), url(src/assets/Imagenes/LibreriaOnline.jpeg);
+    background: linear-gradient(to right, hsla(182, 100%, 74%, 0.459),  hsla(226, 57%, 47%, 0.664)), url(src/assets/Imagenes/QueSomos.jpeg);
     background-size: cover;
     background-attachment: fixed;
     position: relative;

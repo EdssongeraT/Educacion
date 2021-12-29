@@ -44,23 +44,23 @@
           <a href='./contacts'>Contactos</a>
         </li>
       </div>
-      <div *ngIf ="!loggedIn()" class='lista'>
+      <div   class='lista'>
         <li class='dropbtn'>
           <a href='/login'>Ingresar</a>
         </li>
       </div>
-      <div *ngIf ="loggedIn()" >
+      <div   >
         <li class='dropbtn'>
           <a href='/principal-plataforma'>Plataforma</a>
         </li>
       </div>
-      <div *ngIf ="loggedIn()" class='lista'>
+      <div   class='lista'>
         <li class='dropbtn'>
           <a>Perfil</a>
           <div  class='dropdown-content'>
             <a>Perfil</a>
             <a>Calificaciones</a>
-            <a (click)="salirCuenta()">Salir</a>
+            <a >Salir</a>
           </div>
         </li>
       </div>

@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-  <router-outlet></router-outlet>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>servicios-educativos</title>
@@ -12,7 +11,75 @@
 
 <body>
   <header>
-    <app-cabecero></app-cabecero>
+    <nav id="barra">
+      <div>
+        <ul>
+          <li class='active' style='padding: 8px 10px;'>
+            <a href='' style='padding:0%;'><img src='assets/Imagenes/Logo.png' alt='Incio'></a>
+          </li>
+          <div class='lista'>
+            <li class='dropbtn'>
+              <a>Servicios</a>
+              <div class='dropdown-content'>
+                <a routerLink="/servicios-institucionales">Institucionales</a>
+                <a routerLink="/servicios-educativos">Educativos</a>
+                <a routerLink="/servicios-administrativos">Administrativos</a>
+                <a routerLink="/servicios-externos">Externos</a>
+              </div>
+            </li>
+          </div>
+          <div class='lista'>
+            <li class='dropbtn'>
+              <a>Recursos</a>
+              <div class='dropdown-content'>
+                <a href='./RecursosHumanos'>Humano</a>
+                <a href='./RecursosInstalacion'>Instalación</a>
+                <a>Multimedia</a>
+                <a>Recursos humanos</a>
+                <a>Útiles escolares</a>
+              </div>
+            </li>
+          </div>
+          <div class='lista'>
+            <li class='dropbtn'>
+              <a>Políticas</a>
+              <div class='dropdown-content'>
+                <a>Protocolo sanitario COVID-19</a>
+                <a>Acuerdos de convivencia</a>
+                <a>Administrativas</a>
+                <a>Uniforme</a>
+                <a>Seguridad</a>
+              </div>
+            </li>
+          </div>
+          <div class='lista'>
+            <li class='dropbtn'>
+              <a href='./contacts'>Contactos</a>
+            </li>
+          </div>
+          <div   class='lista'>
+            <li class='dropbtn'>
+              <a href='/login'>Ingresar</a>
+            </li>
+          </div>
+          <div   >
+            <li class='dropbtn'>
+              <a href='/principal-plataforma'>Plataforma</a>
+            </li>
+          </div>
+          <div   class='lista'>
+            <li class='dropbtn'>
+              <a>Perfil</a>
+              <div  class='dropdown-content'>
+                <a>Perfil</a>
+                <a>Calificaciones</a>
+                <a >Salir</a>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </nav>
   </header>
   <main>
     <section class="contenedor sobre-nosotros">
@@ -72,7 +139,23 @@
       </section>
     </section>
   </main>
-  <app-pie-pagina></app-pie-pagina>
+  <footer style="margin-top:10px;">
+    <div class="contenedor-footer" >
+        <div class="content-foo">
+            <h4>Telefono</h4> 
+            <p>+52 311 123 4567</p>
+        </div>
+        <div class="content-foo">
+            <h4>Correo</h4>
+            <p>amogus@gmail.com</p>
+        </div>
+        <div class="content-foo">
+            <h4>Localizacion</h4>
+            <p>63176</p>
+        </div>
+    </div>
+    <h2 class="titulo-final">&copy; Podri y asociados</h2>
+</footer>
 </body>
 
 </html>

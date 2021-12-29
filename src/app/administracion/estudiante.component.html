@@ -1,0 +1,619 @@
+<app-header-admin pageTitle="Estudiante" imageUrl="star" helpType="settingspage"></app-header-admin>
+<mat-card [@fallIn]='estado'>
+  <mat-card-content>
+    <div
+      *ngIf="(toggleField=='searchMode') else (toggleField=='addMode')? showAddMode : ((toggleField=='editMode')? showEditMode : showResMode)">
+      <form #searchFormData="ngForm" class="example-form">
+        <mat-card-actions align="start">
+          <button type="button" (click)="toggle('resMode');getData(searchFormData.value);" mat-raised-button
+            [disabled]="(code.value == '' && descr.value == '')" color="primary">Buscar</button>
+          <span class="med-spacer"></span>
+          <span matTooltip="Añadir">
+            <mat-icon color="primary" (click)="toggle('addMode')" svgIcon="add"></mat-icon>
+          </span>
+          <span class="small-spacer"></span>
+          <span matTooltip="Mostrar resultados recientes">
+            <mat-icon color="primary" (click)="toggle('resMode');getData();" svgIcon="cached"></mat-icon>
+          </span>
+        </mat-card-actions>
+        <mat-form-field class="example-form">
+          <input matInput type="text" placeholder="Id Estudiante" id="code" name="code" #code="ngModel" ngModel
+            [disabled]="descr.value !== ''">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-form">
+          <input matInput type="text" placeholder="Nombre" id="descr" name="descr" #descr="ngModel" ngModel
+            [disabled]="code.value !== ''">
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #showAddMode>
+  <form #addDataForm="ngForm" (ngSubmit)="setData(addDataForm.value);" novalidate>
+    <mat-error *ngIf="guardarCambios">
+      Se guardaron los cambios
+      <label class="small-spacer"></label>
+      <mat-icon (click)="this.addDataForm.reset();guardarCambios=false;toggle('searchMode');" svgIcon="clear">
+      </mat-icon>
+    </mat-error>
+    <div *ngIf="!guardarCambios">
+      <mat-progress-bar mode="indeterminate" *ngIf="guardarcambios"></mat-progress-bar>
+      <mat-error *ngIf="error">Error: {{ errorMsj }}</mat-error>
+      <mat-card-actions align="start">
+        <button type="submit" mat-raised-button color="primary">Añadir</button>
+        <button type="reset" (click)="this.addDataForm.reset();" mat-raised-button color="primary">Limpiar</button>
+        <span class="med-spacer"></span>
+        <span matTooltip="Buscar">
+          <mat-icon color="primary" (click)="toggle('searchMode')" svgIcon="search"></mat-icon>
+        </span>
+        <span class="small-spacer"></span>
+        <span matTooltip="Mostrar resulatdos recientes">
+          <mat-icon color="primary" (click)="toggle('resMode');getData();" svgIcon="cached"></mat-icon>
+        </span>
+      </mat-card-actions>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Datos personales (*)
+            </mat-panel-title>
+            <mat-panel-description>
+              Nombre e información personal
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Id Estudiante" name="code" id="code" ngModel required minlength="2">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Contraseña" name="SKEY" id="SKEY" ngModel required minlength="2">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre(s)" name="descr" id="descr" ngModel required minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Apellido Paterno" name="LAST_NAME" id="LAST_NAME" ngModel required
+              minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Apellido Materno" name="MIDDLE_NAME" id="MIDDLE_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Fecha de nacimiento" type="date" name="DOB" id="DOB" ngModel required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre del padre" name="FATHER_NAME" id="FATHER_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Nombre de la madre" name="MOTHER_NAME" id="MOTHER_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre tutor" name="GUARDIAN_NAME" id="GUARDIAN_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Fecha nacimiento tutor" type="date" name="GDOB" id="GDOB" ngModel>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel> 
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Direccion
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles de contacto
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Colonia" name="ADD_TYPE_1" id="ADD_TYPE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Calle" name="ADD_LINE_1" id="ADD_LINE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="numero" name="ADD_LINE_2" id="ADD_LINE_2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo Postal" name="PIN_CODE" id="PIN_CODE" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE" id="STATE" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY" id="COUNTRY" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Colonia (2)" name="ADD_TYPE_2" id="ADD_TYPE_2" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="calle" name="ADD_LINE_12" id="ADD_LINE_12" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="numero" name="ADD_LINE_22" id="ADD_LINE_22" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo Postal" name="PIN_CODE2" id="PIN_CODE2" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE2" id="STATE2" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY2" id="COUNTRY2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Telefono 1" name="MOBILE1" id="MOBILE1" ngModel phone minlength="10">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Telefono 2" name="MOBILE2" id="MOBILE2" ngModel phone minlength="10">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="correo 1" name="EMAIL1" id="EMAIL1" ngModel phone minlength="10">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="correo 2" name="EMAIL2" id="EMAIL2" ngModel phone minlength="10">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Estudios
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles academicos
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Grado" name="DEGREE" id="DEGREE" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Ultima institucion asistida" name="COLLEGE" id="COLLEGE" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Colonia" name="ADD_LINE_C1" id="ADD_LINE_C1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Calle" name="ADD_LINE_C2" id="ADD_LINE_C2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo postal" name="PIN_CODE_C" id="PIN_CODE_C" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE_C" id="STATE_C" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY_C" id="COUNTRY_C" ngModel>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Referencias
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles de referencia
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 1" name="REFERENCE_1" id="REFERENCE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 1 direccion" name="REFERENCE_1_ADD" id="REFERENCE_1_ADD" ngModel
+              minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 2" name="REFERENCE_2" id="REFERENCE_2" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 2 direccion" name="REFERENCE_2_ADD" id="REFERENCE_2_ADD" ngModel
+              minlength="4">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cursos (*)
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-select placeholder="Codigo de curso" name="ENROLLMENT_CODE" id="ENROLLMENT_CODE" ngModel required>
+              <mat-option *ngFor="let code of enrollmentCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Codigo de tarifa" name="FEE_CODE" id="FEE_CODE" ngModel required>
+              <mat-option *ngFor="let code of feeCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Codigo calificaciones" name="MARKS_CODE" id="MARKS_CODE" ngModel required>
+              <mat-option *ngFor="let code of marksCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #showEditMode>
+  <form #editDataForm="ngForm" (ngSubmit)="updateData(editDataForm.value);" novalidate>
+    <input type="hidden" name="_id" id="_id" [ngModel]="(data$ | async)?._id" required>
+    <mat-error *ngIf="guardarCambios">
+      Se guardaron los cambios
+      <label class="small-spacer"></label>
+      <mat-icon (click)="this.editDataForm.reset();guardarCambios=false;toggle('searchMode');" svgIcon="clear">
+      </mat-icon>
+    </mat-error>
+    <div *ngIf="!guardarCambios">
+      <mat-progress-bar mode="indeterminate" *ngIf="guardarcambios"></mat-progress-bar>
+      <mat-error *ngIf="error">Error: {{ errorMsj }}</mat-error>
+      <mat-card-actions align="start">
+        <button type="submit" mat-raised-button color="primary">Actualizar</button>
+        <span class="med-spacer"></span>
+        <span matTooltip="Buscar">
+          <mat-icon color="primary" (click)="toggle('searchMode')" svgIcon="search"></mat-icon>
+        </span>
+        <span class="small-spacer"></span>
+        <span matTooltip="Mostrar resultados recientes">
+          <mat-icon color="primary" (click)="toggle('resMode');getData();" svgIcon="cached"></mat-icon>
+        </span>
+      </mat-card-actions>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Datos personales (*)
+            </mat-panel-title>
+            <mat-panel-description>
+              Nombre e información personal
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Id Estudiante" name="code" id="code" ngModel required minlength="2">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Contraseña" name="SKEY" id="SKEY" ngModel required minlength="2">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre(s)" name="descr" id="descr" ngModel required minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Apellido Paterno" name="LAST_NAME" id="LAST_NAME" ngModel required
+              minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Apellido Materno" name="MIDDLE_NAME" id="MIDDLE_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Fecha de nacimiento" type="date" name="DOB" id="DOB" ngModel required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre del padre" name="FATHER_NAME" id="FATHER_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Nombre de la madre" name="MOTHER_NAME" id="MOTHER_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Nombre tutor" name="GUARDIAN_NAME" id="GUARDIAN_NAME" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Fecha nacimiento tutor" type="date" name="GDOB" id="GDOB" ngModel>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Direccion
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles de contacto
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Colonia" name="ADD_TYPE_1" id="ADD_TYPE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Calle" name="ADD_LINE_1" id="ADD_LINE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="numero" name="ADD_LINE_2" id="ADD_LINE_2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo Postal" name="PIN_CODE" id="PIN_CODE" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE" id="STATE" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY" id="COUNTRY" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Colonia (2)" name="ADD_TYPE_2" id="ADD_TYPE_2" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="calle" name="ADD_LINE_12" id="ADD_LINE_12" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="numero" name="ADD_LINE_22" id="ADD_LINE_22" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo Postal" name="PIN_CODE2" id="PIN_CODE2" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE2" id="STATE2" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY2" id="COUNTRY2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Telefono 1" name="MOBILE1" id="MOBILE1" ngModel phone minlength="10">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Telefono 2" name="MOBILE2" id="MOBILE2" ngModel phone minlength="10">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="correo 1" name="EMAIL1" id="EMAIL1" ngModel phone minlength="10">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="correo 2" name="EMAIL2" id="EMAIL2" ngModel phone minlength="10">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Estudios
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles academicos
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Grado" name="DEGREE" id="DEGREE" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Ultima institucion asistida" name="COLLEGE" id="COLLEGE" ngModel minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Colonia" name="ADD_LINE_C1" id="ADD_LINE_C1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Calle" name="ADD_LINE_C2" id="ADD_LINE_C2" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Codigo postal" name="PIN_CODE_C" id="PIN_CODE_C" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Estado" name="STATE_C" id="STATE_C" ngModel>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Pais" name="COUNTRY_C" id="COUNTRY_C" ngModel>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Referencias
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles de referencia
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 1" name="REFERENCE_1" id="REFERENCE_1" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 1 direccion" name="REFERENCE_1_ADD" id="REFERENCE_1_ADD" ngModel
+              minlength="4">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 2" name="REFERENCE_2" id="REFERENCE_2" ngModel minlength="4">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Referencia 2 direccion" name="REFERENCE_2_ADD" id="REFERENCE_2_ADD" ngModel
+              minlength="4">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cursos (*)
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-select placeholder="Codigo de curso" name="ENROLLMENT_CODE" id="ENROLLMENT_CODE" ngModel required>
+              <mat-option *ngFor="let code of enrollmentCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Codigo de tarifa" name="FEE_CODE" id="FEE_CODE" ngModel required>
+              <mat-option *ngFor="let code of feeCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Codigo calificaciones" name="MARKS_CODE" id="MARKS_CODE" ngModel required>
+              <mat-option *ngFor="let code of marksCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              RH (*)
+            </mat-panel-title>
+            <mat-panel-description>
+              Detalles
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-select placeholder="Curso" name="ENROLLMENT_CODE" id="ENROLLMENT_CODE"
+              [ngModel]="(data$ | async)?.ENROLLMENT_CODE" required>
+              <mat-option *ngFor="let code of enrollmentCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Tarifa" name="FEE_CODE" id="FEE_CODE" [ngModel]="(data$ | async)?.FEE_CODE"
+              required>
+              <mat-option *ngFor="let code of feeCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Calificaiones" name="MARKS_CODE" id="MARKS_CODE"
+              [ngModel]="(data$ | async)?.MARKS_CODE" required>
+              <mat-option *ngFor="let code of marksCDs$" [value]="code._id">
+                {{ code.code }} - {{ code.descr }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Documentos
+            </mat-panel-title>
+            <mat-panel-description>
+              Documentos
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div *ngFor="let file of (data$ | async)?.files">
+            <br />
+            <button type="button" mat-raised-button (click)="showDocument=!showDocument; getDocUrl(file);"
+              color="primary">Mostrar documento</button>
+          </div>
+          <div *ngIf="showDocument">
+            <span matTooltip="Close">
+              <mat-icon color="primary" (click)="showDocument = !showDocument;">limpiar
+              </mat-icon>
+            </span>
+            <br />
+            <a href="{{ docUrl | async }}" target="_blank">Abrir documento {{ fileName }}</a>
+          </div>
+          <br>
+          <div *ngIf="showFileUpload">
+            <span matTooltip="Close">
+              <mat-icon color="primary" (click)="showFileUpload = !showFileUpload;">limpiar
+              </mat-icon>
+            </span>
+            <br />
+            <app-fileupload fileUrl="STUDENT" docId="{{docId}}"></app-fileupload>
+          </div>
+          <br>
+          <button type="button" mat-raised-button (click)="showFileUpload=!showFileUpload" color="primary">Subir archivo</button>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #showResMode>
+  <mat-card-actions align="start">
+    <span class="med-spacer"></span>
+    <span class="med-spacer"></span>
+    <span class="med-spacer"></span>
+    <span matTooltip="Añadir">
+      <mat-icon color="primary" (click)="toggle('addMode')" svgIcon="add"></mat-icon>
+    </span>
+    <span class="small-spacer"></span>
+    <span matTooltip="Buscar">
+      <mat-icon color="primary" (click)="toggle('searchMode')" svgIcon="search"></mat-icon>
+    </span>
+  </mat-card-actions>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Mostrar resultados recientes">
+    </mat-form-field>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="code">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id Estudiante</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.code}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="descr">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.descr}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="_id">
+        <mat-header-cell *matHeaderCellDef> accion </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span matTooltip="Editar">
+            <button mat-icon-button (click)="getDoc(row._id)">
+              <mat-icon color="primary" svgIcon="edit"></mat-icon>
+            </button>
+          </span>
+          <span matTooltip="Eliminar">
+            <button mat-icon-button (click)="deleteDoc(row._id)">
+              <mat-icon color="primary" svgIcon="delete"></mat-icon>
+            </button>
+          </span>
+          <span matTooltip="Tarifa">
+            <button mat-icon-button routerLink="/tarifa/{{row._id}}">
+              <mat-icon color="primary" svgIcon="salary"></mat-icon>
+            </button>
+          </span>
+          <span matTooltip=" Calificaciones">
+            <button mat-icon-button routerLink="/calificacion/{{row._id}}">
+              <mat-icon color="primary">Calificacion</mat-icon>
+            </button>
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</ng-template>
