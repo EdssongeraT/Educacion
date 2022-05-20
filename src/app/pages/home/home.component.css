@@ -6,6 +6,7 @@
 
 body {
     font-family: 'open sans';
+    overflow: hidden;
 }
 
 .contenedor {
@@ -71,6 +72,7 @@ main .sobre-nosotros{
 .contenedor-sobre-nosotros{
     display: flex;
     justify-content: space-evenly;
+    position: relative;
 }
 
 .imagen-about-us{
@@ -380,26 +382,23 @@ footer{
 }
 
 /*chatbot*/
-html {
-    height: 100%;
-  }
-  body {
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
-  }
-  
+.asistentexd{
+
+    margin-bottom: -29%;
+}
+
   .login-box {
-    position: absolute;
-    top: 100%;
-    left: 88%;
-    width: 400px;
+    position: relative;
+    margin-top: 31%;
+    left: 50%;
+    width: 850px;
+    height: -0%;
     padding: 40px;
     transform: translate(-50%, -50%);
     background: rgba(112, 13, 224, 0.5);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
+    border-radius: 30px;
   }
   
   .login-box h2 {
@@ -546,3 +545,24 @@ html {
       bottom: 100%;
     }
   }
+
+/*chat*/
+
+#chat2 .form-control {
+    border-color: transparent;
+    }
+    
+    #chat2 .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+    
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+    
+    
